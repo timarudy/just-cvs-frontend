@@ -12,9 +12,9 @@ const Header: React.FC = () => {
                 <Link to="/">all CVs</Link>
                 <Link to="/member-form">create CV</Link>
             </nav>
-            <h3>
-                <img src="https://storage.googleapis.com/just-cvs-bucket/users_avatars/logo.png" width={70} height={70} alt="logo" />
-            </h3>
+            <div className="brand-logo">
+                    <img src="https://storage.googleapis.com/just-cvs-bucket/users_avatars/logo.png" width={70} height={70} alt="logo" />
+            </div>
         </header>
     );
 };
