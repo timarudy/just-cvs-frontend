@@ -9,7 +9,7 @@ import React from 'react';
 import PreliminaryCVCard from './PreliminaryCVCard';
 
 const usersMock: UserPreliminaryType[] = [
-    { id: 1, name: 'Alice Johnson Boris Boris', dateOfBirth: '15/01/1990', avatarLink: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
+    { id: 1, name: 'Alice Johnson Boris Boris Alice Johnson Boris Boris', dateOfBirth: '15/01/1990', avatarLink: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
     { id: 2, name: 'Bob Smith', dateOfBirth: '22/07/1985', avatarLink: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
     { id: 3, name: 'Carol Williams', dateOfBirth: '30/05/1992', avatarLink: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
     { id: 4, name: 'Alice Johnson', dateOfBirth: '15/01/1990', avatarLink: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
