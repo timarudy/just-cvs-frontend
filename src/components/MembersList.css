@@ -1,0 +1,14 @@
+body {
+    background-color: #FCFAEE;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    column-gap: 150px;
+    row-gap: 50px;
+    margin-top: 120px;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 30px;
+}

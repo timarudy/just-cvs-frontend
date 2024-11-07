@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header: React.FC = () => {
     return (
@@ -11,11 +12,9 @@ const Header: React.FC = () => {
                 <Link to="/">all CVs</Link>
                 <Link to="/member-form">create CV</Link>
             </nav>
-            <div className="header-right">
-                <div className="brand-logo">
-                    <img src="https://storage.googleapis.com/just-cvs-bucket/users_avatars/logo.png" alt="logo" />
-                </div>
-            </div>
+            <h3>
+                <img src="https://storage.googleapis.com/just-cvs-bucket/users_avatars/logo.png" width={70} height={70} alt="logo" />
+            </h3>
         </header>
     );
 };
