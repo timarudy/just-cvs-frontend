@@ -2,7 +2,7 @@ import React from 'react';
 import { UserPreliminaryType } from '../types/userTypes';
 import './PreliminaryCVCard.css';
 
-const UserInfoCard: React.FC<UserPreliminaryType> = ({ name, dateOfBirth, avatarLink }) => {
+const UserInfoCard: React.FC<UserPreliminaryType> = ({ full_name, dateOfBirth, avatarLink }) => {
     return (
         <div className="user-card">
             <div className="avatar">
@@ -11,7 +11,7 @@ const UserInfoCard: React.FC<UserPreliminaryType> = ({ name, dateOfBirth, avatar
                     alt={`${name} avatar`}
                 />
             </div>
-            <h2>{name}</h2>
+            <h2>{full_name}</h2>
             <p>{dateOfBirth}</p>
             <button>see more &gt;&gt;</button>
         </div>

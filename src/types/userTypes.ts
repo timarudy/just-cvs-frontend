@@ -32,7 +32,7 @@ export interface UserPublicationType {
 
 export interface UserPreliminaryType {
     id: number;
-    name: string;
+    full_name: string;
     dateOfBirth: string;
     avatarLink: string;
 };
