@@ -34,10 +34,6 @@ const MembersList: React.FC = () => {
         return <p>Error: {error}</p>;
     }
 
-    {users.map((user) => (
-        console.log(user.full_name)
-    ))}
-
     return (
         <div>
             <main>
@@ -47,8 +43,8 @@ const MembersList: React.FC = () => {
                             id={user.id}
                             key={index}
                             full_name={user.full_name}
-                            dateOfBirth={user.dateOfBirth}
-                            avatarLink={user.avatarLink}
+                            date_of_birth={user.date_of_birth}
+                            photos_link={user.photos_link}
                         />
                     ))}
                 </div>

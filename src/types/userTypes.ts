@@ -33,8 +33,8 @@ export interface UserPublicationType {
 export interface UserPreliminaryType {
     id: number;
     full_name: string;
-    dateOfBirth: string;
-    avatarLink: string;
+    date_of_birth: string;
+    photos_link: string;
 };
 
 export interface UserPersonalDetailsInternalType {
@@ -109,7 +109,7 @@ export interface CVData {
     photos_link: string | null;
     full_name: string;
     date_of_birth: string;
-    gender: 'Male' | 'Female' | 'Other';
+    gender: string;
     place_of_residence: string;
     relocate: boolean;
     names_of_hobby: string[];
