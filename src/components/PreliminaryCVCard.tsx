@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserPreliminaryType } from '../types/userTypes';
-import './PreliminaryCVCard.css';
+import '/src/css/components/PreliminaryCVCard.css';
 
 const UserInfoCard: React.FC<UserPreliminaryType> = ({ name, dateOfBirth, avatarLink }) => {
     return (

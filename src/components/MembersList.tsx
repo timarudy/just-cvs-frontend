@@ -3,7 +3,7 @@ import { fetchAllUsersPreliminaryInfo } from "../api/userApi";
 import { UserPreliminaryType } from "../types/userTypes";
 // @ts-ignore
 import { Link } from "react-router-dom";
-import './MembersList.css';
+import '/src/css/components/MembersList.css';
 
 import React from 'react';
 import PreliminaryCVCard from './PreliminaryCVCard';
