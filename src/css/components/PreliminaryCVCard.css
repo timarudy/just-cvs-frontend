@@ -1,0 +1,60 @@
+.user-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #384B70;
+    outline: solid;
+    outline-width: 5px;
+    outline-color: #507687;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    min-height: 420px;
+    max-width: 300px;
+    padding: 15px;
+    align-items: center;
+    align-content: stretch;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.user-card .avatar img {
+    margin-top: 10px;
+    max-width: 100%;
+    max-height: auto;
+    object-fit: contain;
+}
+
+.user-card h2 {
+    font-size: clamp(1em, 1.8vw, 1.3vmax);
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0 5px 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-card p {
+    font-size: clamp(1em, 2.5vw, 1.3vmax);
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #FCFAEE;
+    margin: 5px 0 10px;
+}
+
+.user-card button {
+    background-color: #B8001F;
+    color: #FCFAEE;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1.3em;
+    text-transform: lowercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.user-card button:hover {
+    background-color: #990000; 
+}
