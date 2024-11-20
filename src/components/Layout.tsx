@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 import React from 'react';
-import Header from './just-cvs-frontend/src/css/components/Header.css';
+import Header from './Header';
 
 const Layout: React.FC = () => {
     return (
