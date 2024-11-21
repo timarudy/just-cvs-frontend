@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/SocialMediaInput.css"
 
 export interface SocialMedia {
     id: string;
@@ -40,7 +41,7 @@ const SocialMediaInput: React.FC<SocialMediaInputProps> = ({ socialMedia, setSoc
     };
 
     return (
-        <div className="social-media-input">
+        <div className="social-media-label">
             <input
                 type="text"
                 value={name}
@@ -53,16 +54,16 @@ const SocialMediaInput: React.FC<SocialMediaInputProps> = ({ socialMedia, setSoc
                 placeholder="URL"
                 onChange={(e) => setUrl(e.target.value)}
             />
-            <button type="button" onClick={handleAddSocialMedia}>
+            <button id="add-button" type="button" onClick={handleAddSocialMedia}>
                 Add
             </button>
-            <div>
+            <div id="sm-list">
                 {socialMedia.map((sm) => (
                     <div key={sm.id} className="social-media-entry">
-                        {sm.name_of_social_media}
-                        <button type="button" onClick={() => removeSocialMedia(sm.id)}>
+                        <button id="remove-button" type="button" onClick={() => removeSocialMedia(sm.id)}>
                             &times;
                         </button>
+                        {sm.name_of_social_media}
                     </div>
                 ))}
             </div>

@@ -82,6 +82,17 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
     return (
         <div className="form-container-pd">
             <div className="left-column">
+                {data.photos_link && (
+                    <div>
+                        <label>preview</label>
+                        <img
+                            id="pre-avatar"
+                            src={data.photos_link}
+                            alt="User Uploaded"
+                            style={{ maxWidth: "300px", maxHeight: "300px" }}
+                        />
+                    </div>
+                )}
                 <label>
                     photo upload
                     <input
@@ -90,29 +101,21 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                         onChange={handlePhotoUpload}
                     />
                 </label>
-                {data.photos_link && (
-                    <div>
-                        <p>preview:</p>
-                        <img
-                            src={data.photos_link}
-                            alt="User Uploaded"
-                            style={{ maxWidth: "300px", maxHeight: "300px" }}
+                <label id="phone-label">
+                    phone number
+                    <div id="phone-input-pd">
+                        <PhoneInput
+                            country={"ua"}
+                            value={data.phone_number}
+                            onChange={handlePhoneNumberChange}
+                            enableSearch={true}
+                            inputProps={{
+                                name: "phone",
+                                required: true,
+                                autoFocus: true,
+                            }}
                         />
                     </div>
-                )}
-                <label>
-                    phone number
-                    <PhoneInput
-                        country={"ua"}
-                        value={data.phone_number}
-                        onChange={handlePhoneNumberChange}
-                        enableSearch={true}
-                        inputProps={{
-                            name: "phone",
-                            required: true,
-                            autoFocus: true,
-                        }}
-                    />
                 </label>
                 <label>
                     <Required isValid={emailValidation}>email</Required>
@@ -142,8 +145,8 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     />
                 </label>
                 <label>
-                    gender:  
-                    <select
+                    gender
+                    <select id="gender-select"
                         value={data.gender}
                         onChange={(e) =>
                             updateData({ ...data, gender: e.target.value })
@@ -192,9 +195,9 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                         }
                     />
                 </label>
-                <label>
+                <label id="reloc">
                     consider relocation
-                    <input
+                    <input id="reloc-cb"
                         type="checkbox"
                         checked={data.relocate}
                         onChange={(e) =>
@@ -202,14 +205,17 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                         }
                     />
                 </label>
-                <label>
+                <label id="hobbies">
                     hobbies
-                    <TagsInput
-                        tags={data.names_of_hobby}
-                        setTags={(newHobbies) =>
-                            updateData({ ...data, names_of_hobby: newHobbies })
-                        }
-                    />
+                    <div>
+                        <TagsInput
+                            tags={data.names_of_hobby}
+                            setTags={(newHobbies) =>
+                                updateData({ ...data, names_of_hobby: newHobbies })
+                            }
+                        />
+                    </div>
+                    
                 </label>
             </div>
         </div>
