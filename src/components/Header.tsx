@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './just-cvs-frontend/src/css/components/Header.css';
+import '../css/components/Header.css';
 
 const Header: React.FC = () => {
     return (
