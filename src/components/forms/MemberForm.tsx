@@ -73,7 +73,7 @@ const MemberForm = () => {
                 photos_link: formData.personal_details.photos_link || null,
                 full_name: formData.personal_details.full_name,
                 date_of_birth: formData.personal_details.date_of_birth,
-                gender: formData.personal_details.gender as 'Male' | 'Female' | 'Other',
+                gender: formData.personal_details.gender,
                 place_of_residence: `${formData.personal_details.city}, ${formData.personal_details.country} ${formData.personal_details.street}`,
                 relocate: formData.personal_details.relocate,
                 names_of_hobby: extractTagValues(formData.personal_details.names_of_hobby),
@@ -151,7 +151,7 @@ const MemberForm = () => {
 
 
             try {
-                const response = await axios.post("http://127.0.0.1:8000/cv-details/", cvDataTrial, {
+                const response = await axios.post("http://127.0.0.1:8000/cv-details/", cvData, {
                     headers: {
                         "Content-Type": "application/json",
                     },

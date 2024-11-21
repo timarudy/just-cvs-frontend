@@ -41,154 +41,6 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
         return true;
     };
 
-    //     const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //         const fullName = e.target.value;
-    //         setFullNameValidation(validateFullName(fullName));
-    //         updateData({ ...data, fullName });
-    //     };
-
-    //     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //         const email = e.target.value;
-    //         setEmailValidation(validateEmail(email));
-    //         updateData({ ...data, email });
-    //     };
-
-    //     const handlePhoneNumberChange = (phone: string) => {
-    //         updateData({ ...data, phoneNumber: phone });
-    //     };
-
-    //     useEffect(() => {
-    //         handleFullNameChange({ target: { value: data.fullName } } as React.ChangeEvent<HTMLInputElement>);
-    //         handleEmailChange({ target: { value: data.email } } as React.ChangeEvent<HTMLInputElement>);
-    //     }, []);
-
-    //     return (
-    //         <div className="form-container">
-    //             <label>
-    //                 <Required isValid={fullNameValidation}>Full Name</Required>:
-    //                 <input
-    //                     type="text"
-    //                     value={data.fullName}
-    //                     onChange={(e) => handleFullNameChange(e)}
-    //                 />
-    //             </label>
-    //             <label>
-    //                 <Required isValid={emailValidation}>Email</Required>:
-    //                 <input
-    //                     type="email"
-    //                     value={data.email}
-    //                     onChange={(e) => handleEmailChange(e)}
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Photo Link:
-    //                 <input
-    //                     type="text"
-    //                     value={data.photoLink}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, photoLink: e.target.value })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Gender:
-    //                 <select
-    //                     value={data.gender}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, gender: e.target.value })
-    //                     }
-    //                 >
-    //                     <option value={"Male"}>Male</option>
-    //                     <option value={"Female"}>Female</option>
-    //                     <option value={"Other"}>Other</option>
-    //                 </select>
-    //             </label>
-    //             <label>
-    //                 Date of Birth:
-    //                 <input
-    //                     type="date"
-    //                     value={data.dateOfBirth}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, dateOfBirth: e.target.value })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Country:
-    //                 <input
-    //                     type="text"
-    //                     value={data.country}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, country: e.target.value })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 City:
-    //                 <input
-    //                     type="text"
-    //                     value={data.city}
-    //                     onChange={(e) => updateData({ ...data, city: e.target.value })}
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Street:
-    //                 <input
-    //                     type="text"
-    //                     value={data.street}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, street: e.target.value })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Consider relocation:
-    //                 <input
-    //                     type="checkbox"
-    //                     checked={data.relocate}
-    //                     onChange={(e) =>
-    //                         updateData({ ...data, relocate: e.target.checked })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Hobbies:
-    //                 <TagsInput
-    //                     tags={data.hobbies}
-    //                     setTags={(newHobbies) =>
-    //                         updateData({ ...data, hobbies: newHobbies })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Social Media Links:
-    //                 <SocialMediaInput
-    //                     socialMedia={data.socialMedia}
-    //                     setSocialMedia={(newSocialMedia) =>
-    //                         updateData({ ...data, socialMedia: newSocialMedia })
-    //                     }
-    //                 />
-    //             </label>
-    //             <label>
-    //                 Phone Number:
-    //                 <PhoneInput
-    //                     country={"ua"} // Default country
-    //                     value={data.phoneNumber}
-    //                     onChange={handlePhoneNumberChange}
-    //                     enableSearch={true}
-    //                     inputProps={{
-    //                         name: "phone",
-    //                         required: true,
-    //                         autoFocus: true,
-    //                     }}
-    //                 />
-    //             </label>
-    //         </div>
-    //     );
-    // };
-
-    // export default PersonalDetailsForm;
-
     const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const full_name = e.target.value;
         setFullNameValidation(validateFullName(full_name));
@@ -203,6 +55,23 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
 
     const handlePhoneNumberChange = (phone: string) => {
         updateData({ ...data, phone_number: phone });
+    };
+
+    const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (!file.type.startsWith("image/")) {
+                alert("Please upload a valid image file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                const base64String = reader.result as string;
+                updateData({ ...data, photos_link: base64String });
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     useEffect(() => {
@@ -229,15 +98,23 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                 />
             </label>
             <label>
-                Photo Link:
+                Photo Upload:
                 <input
-                    type="text"
-                    value={data.photos_link}
-                    onChange={(e) =>
-                        updateData({ ...data, photos_link: e.target.value })
-                    }
+                    type="file"
+                    accept="image/*"
+                    onChange={handlePhotoUpload}
                 />
             </label>
+            {data.photos_link && (
+                <div>
+                    <p>Preview:</p>
+                    <img
+                        src={data.photos_link}
+                        alt="User Uploaded"
+                        style={{ maxWidth: "200px", maxHeight: "200px" }}
+                    />
+                </div>
+            )}
             <label>
                 Gender:
                 <select
@@ -246,9 +123,9 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                         updateData({ ...data, gender: e.target.value })
                     }
                 >
-                    <option value={"Male"}>Male</option>
-                    <option value={"Female"}>Female</option>
-                    <option value={"Other"}>Other</option>
+                    <option value={'male'}>Male</option>
+                    <option value={'female'}>Female</option>
+                    <option value={'other'}>Other</option>
                 </select>
             </label>
             <label>
@@ -320,7 +197,7 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
             <label>
                 Phone Number:
                 <PhoneInput
-                    country={"ua"} // Default country
+                    country={"ua"}
                     value={data.phone_number}
                     onChange={handlePhoneNumberChange}
                     enableSearch={true}

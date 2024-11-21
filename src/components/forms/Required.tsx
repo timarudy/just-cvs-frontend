@@ -2,7 +2,7 @@ import React from 'react';
 
 interface RequiredProps {
     isValid: boolean,
-    children: React.ReactNode; // The label text
+    children: React.ReactNode;
 }
 
 const Required: React.FC<RequiredProps> = ({ children, isValid }) => {
