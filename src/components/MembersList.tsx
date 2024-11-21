@@ -8,6 +8,7 @@ import './MembersList.css';
 import React from 'react';
 import PreliminaryCVCard from './PreliminaryCVCard';
 
+
 const usersMock: UserPreliminaryType[] = [
     { id: 1, full_name: 'Alice Johnson Boris Boris Alice Johnson Boris Boris', date_of_birth: '15/01/1990', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
     { id: 2, full_name: 'Bob Smith', date_of_birth: '22/07/1985', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
