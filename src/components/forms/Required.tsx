@@ -7,7 +7,7 @@ interface RequiredProps {
 
 const Required: React.FC<RequiredProps> = ({ children, isValid }) => {
     return (
-        <span style={{ color: isValid ? 'black' : 'red' }}>
+        <span style={{ color: isValid ? 'white' : 'red' }}>
             {children} {isValid ? '' : <span style={{ color: 'red' }}>*</span>}
         </span>
     );

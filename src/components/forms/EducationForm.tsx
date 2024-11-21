@@ -9,7 +9,7 @@ interface EducationFormProps {
 
 const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
     return (
-        <div>
+        <div className="form-container">
             <label>
                 Education:
                 <EducationInput

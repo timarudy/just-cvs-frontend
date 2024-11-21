@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import "flag-icons/css/flag-icons.min.css";
 import Required from "./Required";
+import "/src/css/components/forms/SummaryForm.css"
 
 const SummaryForm = ({ data, updateData, validate }: any) => {
     const [descriptionValidation, setDescriptionValidation] = useState(false);
@@ -32,15 +33,21 @@ const SummaryForm = ({ data, updateData, validate }: any) => {
 
     return (
         <div className="form-container">
+            <h1>
+                Summary
+            </h1>
+            <h2>
+                Here you can describe yourself, your personal motivation, career goals and what you can offer your potential employer:
+            </h2>
             <label>
-                <Required isValid={descriptionValidation}>Description</Required>:
-                <input
+                <Required isValid={descriptionValidation}>Your summary</Required>
+                <input className="summary-input"
                     type="text"
                     value={data.description}
                     onChange={(e) => handleDescriptionChange(e)}
-                    maxLength={5}
+                    maxLength={500}
                 />
-                <span>{data.description.length}</span>
+                <span className="counter">{data.description.length}/500</span>
             </label>
         </div>
     );
