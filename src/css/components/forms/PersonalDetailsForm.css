@@ -1,0 +1,32 @@
+.form-container-pd {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #384B70;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+.left-column,
+.right-column {
+    width: 50%;
+}
+
+label {
+    display: block;
+    width: 10em;
+    margin-bottom: 1em;
+    font-size: 18px;
+}
+
+input {
+    margin-top: 0.3em auto;
+    max-width: 25em;
+    width: 100%;
+}

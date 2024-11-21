@@ -24,11 +24,11 @@ const MembersList: React.FC = () => {
     const [users, setUsers] = useState<UserPreliminaryType[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
+    /*useEffect(() => {
         fetchAllUsersPreliminaryInfo()
             .then((response) => setUsers(response))
             .catch((err) => setError(err.message));
-    }, []);
+    }, []);*/
 
     if (error) {
         return <p>Error: {error}</p>;
@@ -38,7 +38,7 @@ const MembersList: React.FC = () => {
         <div>
             <main>
                 <div className="user-grid">
-                    {users.map((user, index) => (
+                    {usersMock.map((user, index) => (
                         <PreliminaryCVCard
                             id={user.id}
                             key={index}

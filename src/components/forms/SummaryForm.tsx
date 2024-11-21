@@ -41,13 +41,13 @@ const SummaryForm = ({ data, updateData, validate }: any) => {
             </h2>
             <label>
                 <Required isValid={descriptionValidation}>Your summary</Required>
-                <input
+                <input className="summary-input"
                     type="text"
                     value={data.description}
                     onChange={(e) => handleDescriptionChange(e)}
                     maxLength={500}
                 />
-                <span className="counter">{data.description.length}</span>
+                <span className="counter">{data.description.length}/500</span>
             </label>
         </div>
     );

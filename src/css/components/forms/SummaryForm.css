@@ -1,0 +1,50 @@
+.form-container {
+    width: 80%;
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #384B70;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+h1 {
+    align-self: center;
+    flex: auto;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    margin-top: 0px;
+}
+  
+.form-container label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 10px;
+}
+  
+label input.summary-input {
+    width: 100%;
+    min-height: 20em;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 5px;
+    word-break: break-all;
+}
+  
+.form-container .required {
+    color: #B8001F;
+}
+
+.counter {
+    margin-left: auto;
+}
+  
