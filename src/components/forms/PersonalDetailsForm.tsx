@@ -5,6 +5,7 @@ import "react-phone-input-2/lib/style.css";
 import "flag-icons/css/flag-icons.min.css";
 import Required from "./Required";
 import SocialMediaInput from "./inputs/SocialMediaInput";
+//import '/src/css/components/forms/PersonalDetailsForm.css'
 
 const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
     const [fullNameValidation, setFullNameValidation] = useState(false);
@@ -212,7 +213,7 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
     return (
         <div className="form-container">
             <label>
-                <Required isValid={fullNameValidation}>Full Name</Required>:
+                <Required isValid={fullNameValidation}>Full Name</Required>
                 <input
                     type="text"
                     value={data.full_name}
@@ -220,7 +221,7 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                 />
             </label>
             <label>
-                <Required isValid={emailValidation}>Email</Required>:
+                <Required isValid={emailValidation}>Email</Required>
                 <input
                     type="email"
                     value={data.email}
