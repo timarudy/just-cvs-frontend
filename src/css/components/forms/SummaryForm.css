@@ -1,25 +1,22 @@
 .form-container {
-    width: 80%;
+    width: fit-content(50);
     max-width: 800px;
     min-height: 620px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
-    background-color: #384B70;
+    background-color: #4c5c7d;
     border-radius: 5px;
     padding: 20px;
     margin: 20px auto;
-    color: #fff;
+    color: #ffffff;
 }
 
-h1 {
-    align-self: center;
-    flex: auto;
+#summary-h1 {
+    text-align: center;
     margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-h2 {
+#summary-h2 {
     margin-top: 0px;
 }
   
@@ -30,21 +27,23 @@ h2 {
     margin-bottom: 10px;
 }
   
-label input.summary-input {
-    width: 100%;
-    min-height: 20em;
+.summary-input {
+    width: 99%;
+    min-height: 10em;
     padding: 5px;
     border-radius: 3px;
+    font-size: larger;
     border: none;
     margin-top: 5px;
     word-break: break-all;
+    resize: none;
 }
   
 .form-container .required {
     color: #B8001F;
 }
 
-.counter {
+#counter {
     margin-left: auto;
 }
   

@@ -16,21 +16,16 @@
 .subtopic-label {
     display: flex;
     flex-direction: column;
+    justify-content: left;
     align-items: flex-start;
 }
 
-.subtopic-label input{
-    max-width: 25em;
+#tag-subtopic-list {
+    display: flex;
+    flex-direction: column;
 }
 
-#subtopic-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 10px;
-    margin-right: 40px;
-}
-
-.subtopic-entry {
+#tag-subtopic-entry {
     font-size: 18px;
     text-align: start;
     text-transform: capitalize;

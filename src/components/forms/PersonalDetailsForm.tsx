@@ -206,7 +206,7 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     />
                 </label>
                 <label id="hobbies">
-                    hobbies
+                    <p id="hobbies-hobbies">hobbies</p>
                     <div>
                         <TagsInput
                             tags={data.names_of_hobby}

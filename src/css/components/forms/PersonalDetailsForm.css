@@ -1,6 +1,7 @@
 .form-container-pd {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));;
+    align-items: start;
     width: fit-content(50);
     max-width: 800px;
     min-height: 620px;
@@ -48,7 +49,11 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    align-items: center;
+    align-items: start;
+}
+
+#hobbies-hobbies {
+    margin-top: 0.2em;
 }
 
 #hobbies div{
@@ -56,10 +61,14 @@ input {
 }
 
 .left-column{
+    margin-left: 2em;
+    margin-bottom: 1em;
     width: 10%;
 }
 .right-column {
-    width: 50%;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    width: 70%;
 }
 
 .left-column label {
@@ -67,7 +76,7 @@ input {
     flex-direction: column;
     width: 15em;
     margin-bottom: 1em;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .right-column label {
@@ -103,3 +112,12 @@ button {
 button:hover {
     background-color: #990000; 
 }
+
+.form-nav-buttons {
+    position: relative;
+    margin-top: -5em;
+    display: flex;
+    gap: 38em;
+    justify-content: center;
+    width: 100%;
+ }

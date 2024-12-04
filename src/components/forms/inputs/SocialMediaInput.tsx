@@ -41,12 +41,13 @@ const SocialMediaInput: React.FC<SocialMediaInputProps> = ({ socialMedia, setSoc
     };
 
     return (
-        <div className="social-media-label">
+        <div className="subtopic-label">
             <input
                 type="text"
                 value={name}
                 placeholder="Social Media Name"
                 onChange={(e) => setName(e.target.value)}
+                maxLength={10}
             />
             <input
                 type="url"
@@ -57,9 +58,9 @@ const SocialMediaInput: React.FC<SocialMediaInputProps> = ({ socialMedia, setSoc
             <button id="add-button" type="button" onClick={handleAddSocialMedia}>
                 Add
             </button>
-            <div id="sm-list">
+            <div id="subtopic-list">
                 {socialMedia.map((sm) => (
-                    <div key={sm.id} className="social-media-entry">
+                    <div key={sm.id} className="subtopic-entry">
                         <button id="remove-button" type="button" onClick={() => removeSocialMedia(sm.id)}>
                             &times;
                         </button>
