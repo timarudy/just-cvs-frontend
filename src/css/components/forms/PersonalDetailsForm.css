@@ -7,6 +7,7 @@
     min-height: 620px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
+    border-radius: 5px;
     background-color: #4c5c7d;
     padding: 20px;
     margin: 20px auto;
@@ -117,7 +118,7 @@ button:hover {
     position: relative;
     margin-top: -5em;
     display: flex;
-    gap: 38em;
+    gap: 36em;
     justify-content: center;
     width: 100%;
- }
+}

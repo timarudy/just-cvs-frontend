@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/LanguageSkillsInput.css"
 
 export interface LanguageSkill {
     id: string;
@@ -57,12 +58,13 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                 value={name}
                 placeholder="Language"
                 onChange={(e) => setName(e.target.value)}
+                maxLength={25}
             />
             <select value={level} onChange={(e) => setLevel(e.target.value)}>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
-                <option value="Fluent">Fluent</option>
+                <option value="Native">Native</option>
             </select>
             <input
                 type="file"
@@ -70,7 +72,7 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                 placeholder="Upload Certification (optional)"
             />
             <button type="button" onClick={handleAddLanguage}>
-                Add
+                add
             </button>
             <div>
                 {languages.map((lang) => (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/PublicationsInput.css"
 
 export interface Publication {
     id: string;
@@ -41,34 +42,38 @@ const PublicationInput: React.FC<PublicationInputProps> = ({ publications, setPu
 
     return (
         <div>
-            <input
-                type="text"
-                value={title}
-                placeholder="Publication Title"
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-                type="text"
-                value={publicationLink}
-                placeholder="Publication Link"
-                onChange={(e) => setPublicationLink(e.target.value)}
-            />
-            <input
-                type="text"
-                value={year}
-                placeholder="Year"
-                onChange={(e) => setYear(e.target.value)}
-            />
-            <button type="button" onClick={handleAddPublication}>
-                Add
-            </button>
-            <div>
+            <div className="label-inputs">
+                <input
+                    type="text"
+                    value={title}
+                    placeholder="Publication Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <input
+                    type="text"
+                    value={publicationLink}
+                    placeholder="Publication Link"
+                    onChange={(e) => setPublicationLink(e.target.value)}
+                />
+                <input
+                    type="text"
+                    value={year}
+                    placeholder="Year"
+                    onChange={(e) => setYear(e.target.value)}
+                />
+                <button type="button" onClick={handleAddPublication}>
+                    add
+                </button>
+            </div>
+
+            <div id="pub-list">
                 {publications.map((pub) => (
                     <div key={pub.id}>
-                        {pub.name_of_publication} ({pub.date_of_publication})
-                        <button type="button" onClick={() => removePublication(pub.id)}>
+                        <div id="fancy-lines-ed">‎</div>
+                        <button id="remove-button" type="button" onClick={() => removePublication(pub.id)}>
                             &times;
                         </button>
+                        {pub.name_of_publication} ({pub.date_of_publication})
                     </div>
                 ))}
             </div>

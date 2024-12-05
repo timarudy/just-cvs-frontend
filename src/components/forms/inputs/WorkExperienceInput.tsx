@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/WorkExperienceInput.css"
 
 export interface WorkExperience {
     id: string;
@@ -45,42 +46,45 @@ const WorkExperienceInput: React.FC<WorkExperienceInputProps> = ({ experiences, 
     };
 
     return (
-        <div className="work-experience-input">
-            <input
-                type="text"
-                value={workplace}
-                placeholder="Workplace"
-                onChange={(e) => setWorkplace(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                value={position}
-                placeholder="Position"
-                onChange={(e) => setPosition(e.target.value)}
-                required
-            />
-            <input
-                type="date"
-                value={onboardingDate}
-                placeholder="Onboarding Date"
-                onChange={(e) => setOnboardingDate(e.target.value)}
-                required
-            />
-            <input
-                type="date"
-                value={offboardingDate || ''}
-                placeholder="Offboarding Date (optional)"
-                onChange={(e) => setOffboardingDate(e.target.value)}
-            />
-            <button type="button" onClick={handleAddExperience}>Add</button>
+        <div>
+            <div className="label-inputs-work">
+                <input
+                    type="text"
+                    value={workplace}
+                    placeholder="Workplace"
+                    onChange={(e) => setWorkplace(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    value={position}
+                    placeholder="Position"
+                    onChange={(e) => setPosition(e.target.value)}
+                    required
+                />
+                <input
+                    type="date"
+                    value={onboardingDate}
+                    placeholder="Onboarding Date"
+                    onChange={(e) => setOnboardingDate(e.target.value)}
+                    required
+                />
+                <input
+                    type="date"
+                    value={offboardingDate || ''}
+                    placeholder="Offboarding Date (optional)"
+                    onChange={(e) => setOffboardingDate(e.target.value)}
+                />
+                <button type="button" onClick={handleAddExperience}>add</button>
+            </div>
 
-            <div>
+            <div id="work-list">
                 {experiences.map((exp) => (
                     <div key={exp.id} className="experience-entry">
-                        {exp.place_of_work} - {exp.position}
+                        <div id="fancy-lines">‎</div>
+                        <button id="remove-button" type="button" onClick={() => removeExperience(exp.id)}>&times;</button>
+                        {" "} {exp.place_of_work} - {exp.position} {" "} 
                         ({exp.onboarding_date} to {exp.offboarding_date})
-                        <button type="button" onClick={() => removeExperience(exp.id)}>&times;</button>
                     </div>
                 ))}
             </div>
