@@ -8,27 +8,15 @@ import '../css/components/MembersList.css';
 import React from 'react';
 import PreliminaryCVCard from './PreliminaryCVCard';
 
-// const usersMock: UserPreliminaryType[] = [
-//     { id: 1, full_name: 'Alice Johnson Boris Boris Alice Johnson Boris Boris', date_of_birth: '15/01/1990', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 2, full_name: 'Bob Smith', date_of_birth: '22/07/1985', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 3, full_name: 'Carol Williams', date_of_birth: '30/05/1992', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 4, full_name: 'Alice Johnson', date_of_birth: '15/01/1990', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 5, full_name: 'Bob Smith', date_of_birth: '22/07/1985', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 6, full_name: 'Carol Williams', date_of_birth: '30/05/1992', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 7, full_name: 'Alice Johnson', date_of_birth: '15/01/1990', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 8, full_name: 'Bob Smith', date_of_birth: '22/07/1985', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-//     { id: 9, full_name: 'Carol Williams', date_of_birth: '30/05/1992', photos_link: 'https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png' },
-// ];
-
 const MembersList: React.FC = () => {
     const [users, setUsers] = useState<UserPreliminaryType[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    /*useEffect(() => {
+    useEffect(() => {
         fetchAllUsersPreliminaryInfo()
             .then((response) => setUsers(response))
             .catch((err) => setError(err.message));
-    }, []);*/
+    }, []);
 
     if (error) {
         return <p>Error: {error}</p>;
@@ -38,7 +26,7 @@ const MembersList: React.FC = () => {
         <div>
             <main>
                 <div className="user-grid">
-                    {usersMock.map((user, index) => (
+                    {users.map((user, index) => (
                         <PreliminaryCVCard
                             id={user.id}
                             key={index}

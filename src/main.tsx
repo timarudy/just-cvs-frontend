@@ -21,16 +21,17 @@ const router = createBrowserRouter([
         element: <MembersList />,
       },
       {
-        path: '/member-cv-page',
-        element: <MemberCVPage />,
-      },
-      {
         path: '/member-form',
         element: <MemberForm />,
+      },
+      {
+        path: '/cv-details/:id/*',
+        element: <MemberCVPage />,
       },
     ],
   },
 ]);
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

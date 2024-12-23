@@ -34,8 +34,8 @@ export interface UserPreliminaryType {
     id: number;
     full_name: string;
     date_of_birth: string;
-    photos_link: string;
-};
+    photos_link?: string;
+}
 
 export interface UserPersonalDetailsInternalType {
     full_name: string;

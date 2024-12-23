@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { UserPreliminaryType } from '../types/userTypes';
 import '../css/components/PreliminaryCVCard.css';
 
-const UserInfoCard: React.FC<UserPreliminaryType> = ({ full_name, date_of_birth, photos_link }) => {
+const PreliminaryCVCard: React.FC<UserPreliminaryType> = ({ id, full_name, date_of_birth, photos_link }) => {
     return (
         <section className="user-card">
             <div className="avatar">
@@ -13,9 +14,9 @@ const UserInfoCard: React.FC<UserPreliminaryType> = ({ full_name, date_of_birth,
             </div>
             <h2>{full_name}</h2>
             <p>{date_of_birth}</p>
-            <button>see more &gt;&gt;</button>
+            <Link to={`/cv-details/${id}`} className="user-card-link"><button>see more &gt;&gt;</button></Link>
         </section>
     );
 };
 
-export default UserInfoCard;
+export default PreliminaryCVCard;

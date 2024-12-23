@@ -5,39 +5,27 @@ import "react-phone-input-2/lib/style.css";
 import "flag-icons/css/flag-icons.min.css";
 import Required from "./Required";
 import SocialMediaInput from "./inputs/SocialMediaInput";
-import '/src/css/components/forms/PersonalDetailsForm.css'
+import "/src/css/components/forms/PersonalDetailsForm.css";
 
-const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
+const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: any) => {
     const [fullNameValidation, setFullNameValidation] = useState(false);
     const [emailValidation, setEmailValidation] = useState(false);
+    const [dateOfBirthValidation, setDateOfBirthValidation] = useState(false);
 
     const validateFullName = (name: string) => {
-        if (!name) {
-            validate(false);
-            return false;
-        }
+        if (!name) return false;
         const regex = /^[a-zA-Z\s]+$/;
-        if (!regex.test(name)) {
-            validate(false);
-            return false;
-        }
-
-        validate(true);
-        return true;
+        return regex.test(name);
     };
 
     const validateEmail = (email: string) => {
+        if (!email) return false;
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email) {
-            validate(false);
-            return false;
-        }
-        if (!regex.test(email)) {
-            validate(false);
-            return false;
-        }
+        return regex.test(email);
+    };
 
-        validate(true);
+    const validateDateOfBirth = (dob: string) => {
+        if (!dob) return false;
         return true;
     };
 
@@ -47,21 +35,27 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
         updateData({ ...data, full_name });
     };
 
+    const handlePhoneNumberChange = (phone: string) => {
+        updateData({ ...data, phone_number: phone });
+    };
+
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const email = e.target.value;
         setEmailValidation(validateEmail(email));
         updateData({ ...data, email });
     };
 
-    const handlePhoneNumberChange = (phone: string) => {
-        updateData({ ...data, phone_number: phone });
+    const handleDateOfBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const date_of_birth = e.target.value;
+        setDateOfBirthValidation(validateDateOfBirth(date_of_birth));
+        updateData({ ...data, date_of_birth });
     };
 
     const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             if (!file.type.startsWith("image/")) {
-                alert("Please upload a valid image file.");
+                showNotification("Please upload a valid image file.");
                 return;
             }
 
@@ -75,9 +69,27 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
     };
 
     useEffect(() => {
-        handleFullNameChange({ target: { value: data.full_name } } as React.ChangeEvent<HTMLInputElement>);
-        handleEmailChange({ target: { value: data.email } } as React.ChangeEvent<HTMLInputElement>);
+        setFullNameValidation(validateFullName(data.full_name));
+        setEmailValidation(validateEmail(data.email));
+        setDateOfBirthValidation(validateDateOfBirth(data.date_of_birth));
     }, []);
+
+    useEffect(() => {
+        if (
+            fullNameValidation &&
+            emailValidation &&
+            dateOfBirthValidation
+        ) {
+            validate(true);
+        } else {
+            validate(false);
+        }
+    }, [
+        fullNameValidation,
+        emailValidation,
+        dateOfBirthValidation,
+        validate
+    ]);
 
     return (
         <div className="form-container-pd">
@@ -105,8 +117,8 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     <PhoneInput
                         country={"ua"}
                         value={data.phone_number}
-                        onChange={handlePhoneNumberChange}
                         enableSearch={true}
+                        onChange={handlePhoneNumberChange}
                         inputProps={{
                             name: "phone",
                             required: true,
@@ -119,7 +131,7 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     <input
                         type="email"
                         value={data.email}
-                        onChange={(e) => handleEmailChange(e)}
+                        onChange={handleEmailChange}
                     />
                 </label>
                 <label>
@@ -132,38 +144,39 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     />
                 </label>
             </div>
+
             <div className="right-column">
                 <label>
                     <Required isValid={fullNameValidation}>full name</Required>
                     <input
                         type="text"
                         value={data.full_name}
-                        onChange={(e) => handleFullNameChange(e)}
+                        onChange={handleFullNameChange}
                     />
                 </label>
                 <label>
-                    gender:  
+                    gender:
                     <select
-                        value={data.gender}
+                        value={data.gender || "male"}
                         onChange={(e) =>
                             updateData({ ...data, gender: e.target.value })
                         }
                     >
-                        <option value={'male'}>Male</option>
-                        <option value={'female'}>Female</option>
-                        <option value={'other'}>Other</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
                 </label>
                 <label>
-                    date of birth
+                    <Required isValid={dateOfBirthValidation}>date of birth</Required>
                     <input
                         type="date"
+                        required
                         value={data.date_of_birth}
-                        onChange={(e) =>
-                            updateData({ ...data, date_of_birth: e.target.value })
-                        }
+                        onChange={handleDateOfBirthChange}
                     />
                 </label>
+
                 <label>
                     country
                     <input
@@ -179,7 +192,9 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
                     <input
                         type="text"
                         value={data.city}
-                        onChange={(e) => updateData({ ...data, city: e.target.value })}
+                        onChange={(e) =>
+                            updateData({ ...data, city: e.target.value })
+                        }
                     />
                 </label>
                 <label>
@@ -217,4 +232,3 @@ const PersonalDetailsForm = ({ data, updateData, validate }: any) => {
 };
 
 export default PersonalDetailsForm;
-

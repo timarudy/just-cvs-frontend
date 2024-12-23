@@ -1,16 +1,21 @@
 import { useState } from "react";
 import PersonalDetailsForm from "./PersonalDetailsForm";
-import { CVData, FormDataType } from "../../types/userTypes";
 import SummaryForm from "./SummaryForm";
 import SkillsForm from "./SkillsForm";
-import { extractSocialMediaValues, extractTagValues } from "../../extensions/arrayExtensions";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
+import Notification from "../Notification";
+import "/src/css/components/forms/MemberForm.css";
+
+import { extractSocialMediaValues, extractTagValues } from "../../extensions/arrayExtensions";
 import axios from "axios";
+
+import { CVData, FormDataType } from "../../types/userTypes";
 
 const MemberForm = () => {
     const sectionsNumber: number = 5;
     const [currentStep, setCurrentStep] = useState(1);
+
     const [formData, setFormData] = useState<FormDataType>({
         personal_details: {
             full_name: "",
@@ -38,16 +43,25 @@ const MemberForm = () => {
         general_education: {
             education: [],
             publication: [],
-        }
+        },
     });
-
 
     const [formValid, setFormValid] = useState(false);
 
+    const [notification, setNotification] = useState<string | null>(null);
+    const [notificationType, setNotificationType] = useState<"success" | "error" | "info">("info");
+
+    // Show notification
+    const showNotification = (message: string, type: "success" | "error" | "info" = "info") => {
+        setNotification(message);
+        setNotificationType(type);
+        setTimeout(() => setNotification(null), 3000);
+    };
+
     const updateFormData = (section: string, newData: any) => {
-        setFormData(prevData => ({
+        setFormData((prevData) => ({
             ...prevData,
-            [section]: newData
+            [section]: newData,
         }));
     };
 
@@ -59,7 +73,7 @@ const MemberForm = () => {
         if (formValid) {
             setCurrentStep(currentStep + 1);
         } else {
-            alert('Please fill in all required fields.');
+            showNotification("Please fill in all required fields.", "error");
         }
     };
 
@@ -94,62 +108,6 @@ const MemberForm = () => {
                 publication: formData.general_education.publication,
             };
 
-            const cvDataTrial = {
-                photos_link: "/Users/timurrudenko/JustCVs/just-cvs/images/user_avatar_1.png",
-                full_name: "John Doe",
-                date_of_birth: "1990-01-01",
-                gender: "Male",
-                place_of_residence: "New York",
-                relocate: true,
-                names_of_hobby: ["Reading", "Coding", "table tenis"],
-                phone_number: "+123456789",
-                email: "johnoe@example.com",
-                summary: "Bla bla bla",
-                hard_skills: ["Python", "Django", "DRF"],
-                soft_skills: ["Communication", "Problem-solving"],
-                social_media: [
-                    {
-                        name_of_social_media: "xvideo",
-                        url: "https://xvideo.com/johndoe"
-                    }
-                ],
-                language: [
-                    {
-                        name_of_language: "Poland",
-                        level_of_language: "Fluent",
-                        certification: null
-                    },
-                    {
-                        name_of_language: "Spanish",
-                        level_of_language: "Advanced",
-                        certification: "https://x.com/johndoe"
-                    }
-                ],
-                work_experience: [
-                    {
-                        position: "Software Engineer",
-                        place_of_work: "Tech Corp",
-                        onboarding_date: "2015-01-01",
-                        offboarding_date: "-"
-                    }
-                ],
-                education: [
-                    {
-                        educational_organisation: "XYZ University",
-                        year_of_start: 2010,
-                        year_of_end: 2014
-                    }
-                ],
-                publication: [
-                    {
-                        name_of_publication: "Research Paper",
-                        date_of_publication: "2020-05-01",
-                        publication_link: null
-                    }
-                ]
-            };
-
-
             try {
                 const response = await axios.post("http://127.0.0.1:8000/cv-details/", cvData, {
                     headers: {
@@ -157,48 +115,59 @@ const MemberForm = () => {
                     },
                 });
 
+                showNotification("Successfully submitted!", "success");
                 console.log("Successfully submitted:", response.data);
             } catch (error) {
                 console.error("Error submitting data:", error);
+                showNotification("Failed to submit data. Please try again.", "error");
             }
         } else {
-            alert('Please fill in all required fields.');
+            showNotification("Please fill in all required fields.", "error");
         }
     };
 
     return (
-        <div>
+        <div style={{ position: "relative" }}>
+            {notification && (
+                <Notification
+                    message={notification}
+                    type={notificationType}
+                    onClose={() => setNotification(null)}
+                />
+            )}
+
             {currentStep === 1 && (
                 <PersonalDetailsForm
                     data={formData.personal_details}
-                    updateData={(newData: any) => updateFormData('personal_details', newData)}
+                    updateData={(newData: any) => updateFormData("personal_details", newData)}
                     validate={validateRequiredFields}
+                    showNotification={showNotification} // pass the function down
                 />
             )}
             {currentStep === 2 && (
                 <SummaryForm
                     data={formData.summary}
-                    updateData={(newData: any) => updateFormData('summary', newData)}
+                    updateData={(newData: any) => updateFormData("summary", newData)}
                     validate={validateRequiredFields}
                 />
             )}
             {currentStep === 3 && (
                 <SkillsForm
                     data={formData.skills}
-                    updateData={(newData: any) => updateFormData('skills', newData)}
+                    updateData={(newData: any) => updateFormData("skills", newData)}
                     validate={validateRequiredFields}
                 />
             )}
             {currentStep === 4 && (
                 <WorkForm
                     data={formData.work_experience}
-                    updateData={(newExperiences: any) => updateFormData('work_experience', newExperiences)}
+                    updateData={(newExperiences: any) => updateFormData("work_experience", newExperiences)}
                 />
             )}
             {currentStep === 5 && (
                 <EducationForm
                     data={formData.general_education}
-                    updateData={(newData: any) => updateFormData('general_education', newData)}
+                    updateData={(newData: any) => updateFormData("general_education", newData)}
                 />
             )}
 
