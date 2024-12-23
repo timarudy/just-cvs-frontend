@@ -1,0 +1,32 @@
+.label-inputs-work {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    gap: 1em;
+    margin: 1em 0 0 0;
+}
+
+.label-inputs-work input {
+    max-height: 0.5em;
+}
+
+.label-inputs-work button{
+    margin: 0 2em 1em;
+    border-radius: 0px;
+    font-size: 18px;
+    padding: 0.2em 0.8em;
+}
+
+#fancy-lines {
+    background-color: #507687;
+    width: 100em;
+    font-size: 7px;
+    margin: 2em 0;
+}
+
+#work-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+}

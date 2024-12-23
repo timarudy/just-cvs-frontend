@@ -1,6 +1,7 @@
 import React from 'react';
 import EducationInput, { Education } from './inputs/EducationInput';
 import PublicationInput, { Publication } from './inputs/PublicationsInput';
+import "/src/css/components/forms/EducationForm.css"
 
 interface EducationFormProps {
     data: { education: Education[]; publication: Publication[] };
@@ -9,9 +10,9 @@ interface EducationFormProps {
 
 const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
     return (
-        <div className="form-container">
+        <div className="form-container-ed">
             <label>
-                Education:
+                <p>education:</p>
                 <EducationInput
                     education={data.education}
                     setEducation={(newEducation) =>
@@ -20,7 +21,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
                 />
             </label>
             <label>
-                Publications:
+                <p>publications:</p>
                 <PublicationInput
                     publications={data.publication}
                     setPublications={(newPublications) =>

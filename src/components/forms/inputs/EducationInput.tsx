@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/EducationInput.css"
 
 export interface Education {
     id: string;
@@ -39,34 +40,38 @@ const EducationInput: React.FC<EducationInputProps> = ({ education, setEducation
 
     return (
         <div>
-            <input
-                type="text"
-                value={institution}
-                placeholder="Institution"
-                onChange={(e) => setInstitution(e.target.value)}
-            />
-            <input
-                type="text"
-                value={startYear}
-                placeholder="Start Year"
-                onChange={(e) => setStartYear(e.target.value)}
-            />
-            <input
-                type="text"
-                value={endYear}
-                placeholder="End Year"
-                onChange={(e) => setEndYear(e.target.value)}
-            />
-            <button type="button" onClick={handleAddEducation}>
-                Add
-            </button>
-            <div>
+            <div className="label-inputs">
+                <input
+                    type="text"
+                    value={institution}
+                    placeholder="Institution"
+                    onChange={(e) => setInstitution(e.target.value)}
+                />
+                <input
+                    type="text"
+                    value={startYear}
+                    placeholder="Start Year"
+                    onChange={(e) => setStartYear(e.target.value)}
+                />
+                <input
+                    type="text"
+                    value={endYear}
+                    placeholder="End Year"
+                    onChange={(e) => setEndYear(e.target.value)}
+                />
+                <button type="button" onClick={handleAddEducation}>
+                    add
+                </button>
+            </div>
+
+            <div id="ed-list">
                 {education.map((edu) => (
                     <div key={edu.id}>
-                        {edu.educational_organisation} ({edu.year_of_start} - {edu.year_of_end})
-                        <button type="button" onClick={() => removeEducation(edu.id)}>
+                        <div id="fancy-lines-ed">‎</div>
+                         <button id="remove-button" type="button" onClick={() => removeEducation(edu.id)}>
                             &times;
                         </button>
+                        {edu.educational_organisation} ({edu.year_of_start} - {edu.year_of_end})
                     </div>
                 ))}
             </div>

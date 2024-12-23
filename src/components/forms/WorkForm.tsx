@@ -1,10 +1,11 @@
 import WorkExperienceInput from "./inputs/WorkExperienceInput";
+import "/src/css/components/forms/WorkForm.css"
 
 const WorkForm = ({ data, updateData }: any) => {
     return (
-        <div className="form-container">
+        <div className="form-container-work">
             <label>
-                Work Experience:
+                <p>work experience:</p>
                 <WorkExperienceInput
                     experiences={data}
                     setExperiences={(newExperiences) =>

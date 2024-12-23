@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import "/src/css/components/forms/inputs/TagsInput.css"
+
 
 export interface TagType {
     id: string,
@@ -36,21 +38,22 @@ const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
     };
 
     return (
-        <div className='tags-input'>
+        <div className='subtopic-input'>
             <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
+                maxLength={15}
             />
             <br />
-            <div>
+            <div id="tag-subtopic-list">
                 {tags.map((tagObj) => (
-                    <div key={tagObj.id} className="tag">
-                        {tagObj.tag}
-                        <button type="button" onClick={() => removeTag(tagObj.id)}>
+                    <div key={tagObj.id} id="tag-subtopic-entry">
+                        <button id="remove-button" type="button" onClick={() => removeTag(tagObj.id)}>
                             &times;
                         </button>
+                        {tagObj.tag}
                     </div>
                 ))}
             </div>

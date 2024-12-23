@@ -94,6 +94,17 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
     return (
         <div className="form-container-pd">
             <div className="left-column">
+                {data.photos_link && (
+                    <div>
+                        <label>preview</label>
+                        <img
+                            id="pre-avatar"
+                            src={data.photos_link}
+                            alt="User Uploaded"
+                            style={{ maxWidth: "300px", maxHeight: "300px" }}
+                        />
+                    </div>
+                )}
                 <label>
                     photo upload
                     <input
@@ -102,17 +113,7 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                         onChange={handlePhotoUpload}
                     />
                 </label>
-                {data.photos_link && (
-                    <div>
-                        <p>preview:</p>
-                        <img
-                            src={data.photos_link}
-                            alt="User Uploaded"
-                            style={{ maxWidth: "300px", maxHeight: "300px" }}
-                        />
-                    </div>
-                )}
-                <label>
+                <label id="phone-label">
                     phone number
                     <PhoneInput
                         country={"ua"}
@@ -207,9 +208,9 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                         }
                     />
                 </label>
-                <label>
+                <label id="reloc">
                     consider relocation
-                    <input
+                    <input id="reloc-cb"
                         type="checkbox"
                         checked={data.relocate}
                         onChange={(e) =>
@@ -217,14 +218,17 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                         }
                     />
                 </label>
-                <label>
-                    hobbies
-                    <TagsInput
-                        tags={data.names_of_hobby}
-                        setTags={(newHobbies) =>
-                            updateData({ ...data, names_of_hobby: newHobbies })
-                        }
-                    />
+                <label id="hobbies">
+                    <p id="hobbies-hobbies">hobbies</p>
+                    <div>
+                        <TagsInput
+                            tags={data.names_of_hobby}
+                            setTags={(newHobbies) =>
+                                updateData({ ...data, names_of_hobby: newHobbies })
+                            }
+                        />
+                    </div>
+                    
                 </label>
             </div>
         </div>

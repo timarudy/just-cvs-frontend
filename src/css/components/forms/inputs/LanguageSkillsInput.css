@@ -1,0 +1,17 @@
+.language-skills-input {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.language-skills-input input {
+    max-height: 0.5em;
+}
+
+.language-skills-input button{
+    margin: 0 2em 1em;
+    border-radius: 0px;
+    font-size: 18px;
+    padding: 0.2em 0.8em;
+}

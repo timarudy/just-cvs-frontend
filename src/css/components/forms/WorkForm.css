@@ -1,0 +1,21 @@
+.form-container-work {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: fit-content(50);
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #4c5c7d;
+    border-radius: 5px;
+    padding: 5px 20px 20px 20px;
+    margin: 20px auto;
+    color: #ffffff;
+}
+
+.form-container-work p{
+    width: 10em;
+    font-size: 20px;
+}

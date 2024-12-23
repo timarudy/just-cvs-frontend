@@ -171,7 +171,7 @@ const MemberForm = () => {
                 />
             )}
 
-            <div>
+            <div className="form-nav-buttons">
                 {currentStep > 1 && <button onClick={handlePrevious}>Previous</button>}
                 {currentStep < sectionsNumber && <button onClick={handleNext}>Next</button>}
                 {currentStep === sectionsNumber && <button onClick={handleSubmit}>Submit</button>}
