@@ -94,6 +94,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
             ) : (
                 <>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <p><img src={formData.photos_link} alt="avatar" /></p>
                     <p>
                         <strong>Full Name:</strong> {formData.full_name}
@@ -139,6 +140,8 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                         ))}
                     </ul>
 =======
+=======
+>>>>>>> Stashed changes
                     <div className="form-container-pd">
                         <div className="left-column">
                             <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/></p>
@@ -202,6 +205,9 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </div>
                         </div>
                     </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     <button onClick={() => setIsEditing(true)}>Modify</button>
                 </>

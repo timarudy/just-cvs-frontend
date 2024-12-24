@@ -6,6 +6,10 @@ import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Notification from "../Notification";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+// import "/src/css/components/forms/MemberForm.css";
+>>>>>>> Stashed changes
 =======
 // import "/src/css/components/forms/MemberForm.css";
 >>>>>>> Stashed changes
