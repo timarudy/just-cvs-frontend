@@ -5,7 +5,6 @@ import SkillsForm from "./SkillsForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Notification from "../Notification";
-import "/src/css/components/forms/MemberForm.css";
 
 import { extractSocialMediaValues, extractTagValues } from "../../extensions/arrayExtensions";
 import axios from "axios";
@@ -141,7 +140,7 @@ const MemberForm = () => {
                     data={formData.personal_details}
                     updateData={(newData: any) => updateFormData("personal_details", newData)}
                     validate={validateRequiredFields}
-                    showNotification={showNotification} // pass the function down
+                    showNotification={showNotification}
                 />
             )}
             {currentStep === 2 && (

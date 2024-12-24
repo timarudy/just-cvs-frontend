@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import Notification from "../Notification";
@@ -10,24 +10,20 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
     const [notification, setNotification] = useState<string | null>(null);
     const [notificationType, setNotificationType] = useState<"success" | "error" | "info">("info");
 
-    // Construct the API URL dynamically
     const getApiUrl = () => {
         const { origin, pathname } = window.location;
 
-        // Remove unnecessary paths like `/personal-details`
         const apiPath = pathname.split("/").slice(0, 3).join("/");
-        const apiOrigin = origin.replace(/:\d+/, ":8000"); // Replace with port 8000
+        const apiOrigin = origin.replace(/:\d+/, ":8000");
         return `${apiOrigin}${apiPath}/`;
     };
 
-    // Show notification
     const showNotification = (message: string, type: "success" | "error" | "info" = "info") => {
         setNotification(message);
         setNotificationType(type);
         setTimeout(() => setNotification(null), 3000);
     };
 
-    // Validate the form fields
     const validateForm = () => {
         const validateFullName = (name: string) => /^[a-zA-Z\s]+$/.test(name);
         const validateEmail = (email: string) =>
@@ -41,7 +37,6 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
         );
     };
 
-    // Handle save
     const handleSave = async () => {
         if (!validateForm()) {
             showNotification("Please correct the errors before saving.", "error");
@@ -52,9 +47,8 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
             const url = getApiUrl();
             await axios.put(url, formData);
 
-            // Fetch the updated data to refresh the page
             const response = await axios.get(url);
-            setFormData(response.data); // Update the displayed data with the latest
+            setFormData(response.data);
 
             setIsEditing(false);
             showNotification("Personal details updated successfully!", "success");
@@ -64,18 +58,15 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
         }
     };
 
-    // Handle cancel
     const handleCancel = () => {
         setIsEditing(false);
-        setFormData(data); // Reset to original data
+        setFormData(data);
     };
 
-    // Update form data
     const updateFormData = (newData: any) => {
         setFormData(newData);
     };
 
-    // Validate on form data change
     useEffect(() => {
         setIsValid(validateForm());
     }, [formData]);
@@ -100,6 +91,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                 </>
             ) : (
                 <>
+                    <p><img src={formData.photos_link} alt="avatar" /></p>
                     <p>
                         <strong>Full Name:</strong> {formData.full_name}
                     </p>
