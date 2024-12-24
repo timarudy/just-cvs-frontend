@@ -6,6 +6,7 @@ import SummaryView from "./views/SummaryView";
 import SkillsView from "./views/SkillsView";
 import WorkExperienceView from "./views/WorkExperienceView";
 import EducationView from "./views/EducationView";
+import { mockCVData, simulateApiResponse } from "./mockCVData.ts"; // mock
 
 const MemberCVPage = () => {
     const { id } = useParams();
@@ -15,8 +16,9 @@ const MemberCVPage = () => {
     useEffect(() => {
         const fetchCV = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/cv-details/${id}/`);
-                setCVData(response.data);
+                //const response = await axios.get(`http://127.0.0.1:8000/cv-details/${id}/`); commented for mock
+                const response = await simulateApiResponse(mockCVData);
+                setCVData(response); // originally response.data ; mock
                 console.log(response.data);
 
                 navigate("personal-details");

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import Notification from "../Notification";
+import "/src/css/components/views/PersonalDetailsView.css";
+
 
 const PersonalDetailsView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -91,6 +93,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                 </>
             ) : (
                 <>
+<<<<<<< Updated upstream
                     <p><img src={formData.photos_link} alt="avatar" /></p>
                     <p>
                         <strong>Full Name:</strong> {formData.full_name}
@@ -135,6 +138,71 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </li>
                         ))}
                     </ul>
+=======
+                    <div className="form-container-pd">
+                        <div className="left-column">
+                            <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/></p>
+                            <div className="data-field">
+                                <div className="data-label">phone number</div>
+                                <div className="data-value">{formData.phone_number}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">email</div>
+                                <div className="data-value">{formData.email}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">social media links</div>
+                                <ul>
+                                    {formData.social_media.map((link: any, index: number) => (
+                                        <li key={index}>
+                                            <a
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {link.platform}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="right-column">
+                            <div className="data-field">
+                                <div className="data-label">full name</div>
+                                <div className="data-value">{formData.full_name}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">gender</div>
+                                <div className="data-value">{formData.gender}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">date of birth</div>
+                                <div className="data-value">{formData.date_of_birth}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">country</div>
+                                <div className="data-value">{formData.country}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">city</div>
+                                <div className="data-value">{formData.city}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">street</div>
+                                <div className="data-value">{formData.street}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">relocation</div>
+                                <div className="data-value">{formData.relocate ? "possible" : "not possible"}</div>
+                            </div>
+                            <div className="data-field">
+                                <div className="data-label">hobbies</div>
+                                <div className="data-value">{formData.names_of_hobby.join(", ")}</div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                     <button onClick={() => setIsEditing(true)}>Modify</button>
                 </>
             )}

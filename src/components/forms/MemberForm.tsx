@@ -5,6 +5,10 @@ import SkillsForm from "./SkillsForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Notification from "../Notification";
+<<<<<<< Updated upstream
+=======
+// import "/src/css/components/forms/MemberForm.css";
+>>>>>>> Stashed changes
 
 import { extractSocialMediaValues, extractTagValues } from "../../extensions/arrayExtensions";
 import axios from "axios";

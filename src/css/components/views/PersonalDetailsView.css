@@ -1,0 +1,54 @@
+.view-container-pd {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    align-items: start;
+    width: fit-content(50);
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #4c5c7d;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+#pd-avatar {
+    margin-top: -0.8em;
+    outline: solid;
+    outline-offset: -5px;
+    outline-width: 6px;
+    outline-color: #507687;
+}
+
+.view-container-pd .left-column {
+    margin-left: 2em;
+    margin-bottom: 1em;
+    width: 30%;
+}
+
+.view-container-pd .right-column {
+    margin-left: 2em;
+    margin-bottom: 1em;
+    width: 70%;
+}
+
+.view-container-pd .data-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    font-size: 20px;
+}
+
+.view-container-pd .data-label {
+    margin-bottom: 0.3em;
+}
+
+.view-container-pd .data-value {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    min-height: 2em;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
