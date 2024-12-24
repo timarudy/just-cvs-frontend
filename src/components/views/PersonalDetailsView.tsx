@@ -93,55 +93,6 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                 </>
             ) : (
                 <>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    <p><img src={formData.photos_link} alt="avatar" /></p>
-                    <p>
-                        <strong>Full Name:</strong> {formData.full_name}
-                    </p>
-                    <p>
-                        <strong>Date of Birth:</strong> {formData.date_of_birth}
-                    </p>
-                    <p>
-                        <strong>Gender:</strong> {formData.gender}
-                    </p>
-                    <p>
-                        <strong>Address:</strong> {formData.city}, {formData.country},{" "}
-                        {formData.street}
-                    </p>
-                    <p>
-                        <strong>Relocation:</strong>{" "}
-                        {formData.relocate ? "Possible" : "Not possible"}
-                    </p>
-                    <p>
-                        <strong>Hobbies:</strong>{" "}
-                        {formData.names_of_hobby.join(", ")}
-                    </p>
-                    <p>
-                        <strong>Email:</strong> {formData.email}
-                    </p>
-                    <p>
-                        <strong>Phone:</strong> {formData.phone_number}
-                    </p>
-                    <p>
-                        <strong>Social Media:</strong>
-                    </p>
-                    <ul>
-                        {formData.social_media.map((link: any, index: number) => (
-                            <li key={index}>
-                                <a
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {link.platform}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-=======
-=======
->>>>>>> Stashed changes
                     <div className="form-container-pd">
                         <div className="left-column">
                             <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/></p>
@@ -205,10 +156,6 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </div>
                         </div>
                     </div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                     <button onClick={() => setIsEditing(true)}>Modify</button>
                 </>
             )}
