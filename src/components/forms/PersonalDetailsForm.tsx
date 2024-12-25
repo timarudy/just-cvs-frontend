@@ -177,7 +177,6 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                         onChange={handleDateOfBirthChange}
                     />
                 </label>
-
                 <label>
                     country
                     <input
@@ -228,7 +227,6 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                             }
                         />
                     </div>
-                    
                 </label>
             </div>
         </div>

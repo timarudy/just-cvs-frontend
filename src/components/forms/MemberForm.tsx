@@ -50,7 +50,6 @@ const MemberForm = () => {
     const [notification, setNotification] = useState<string | null>(null);
     const [notificationType, setNotificationType] = useState<"success" | "error" | "info">("info");
 
-    // Show notification
     const showNotification = (message: string, type: "success" | "error" | "info" = "info") => {
         setNotification(message);
         setNotificationType(type);

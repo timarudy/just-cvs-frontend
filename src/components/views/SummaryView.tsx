@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import SummaryForm from "../forms/SummaryForm";
 
 const SummaryView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState(data);
+    const [isValid, setIsValid] = useState(false);
     const [notification, setNotification] = useState<string | null>(null);
     const [notificationType, setNotificationType] = useState<"success" | "error" | "info">("info");
 
@@ -22,11 +24,18 @@ const SummaryView = ({ data }: { data: any }) => {
     };
 
     const handleSave = async () => {
+        if (!validateForm()) {
+            showNotification("Please correct the errors before saving.", "error");
+            return;
+        }
+
         try {
             const url = getApiUrl();
-            await axios.put(url, { summary: formData });
+            await axios.put(url, formData);
+
             const response = await axios.get(url);
-            setFormData(response.data.summary);
+            setFormData(response.data);
+
             setIsEditing(false);
             showNotification("Summary updated successfully!", "success");
         } catch (error) {
@@ -35,26 +44,44 @@ const SummaryView = ({ data }: { data: any }) => {
         }
     };
 
+    const updateFormData = (newData: any) => {
+        setFormData((prevState: any) => ({ ...prevState, ...newData }));
+    };    
+
     const handleCancel = () => {
         setIsEditing(false);
         setFormData(data);
     };
+
+    const validateForm = () => {
+        const validateSummary = (description: string) => description.length > 0 && description.length <= 500;
+        return validateSummary(formData);
+    };
+
+    useEffect(() => {
+        setIsValid(validateForm());
+    }, [formData]);
 
     return (
         <div>
             <h2>Summary</h2>
             {isEditing ? (
                 <>
-                    <textarea
-                        value={formData}
-                        onChange={(e) => setFormData(e.target.value)}
-                        rows={5}
-                        cols={50}
+                    <SummaryForm
+                        data={{
+                            description: formData
+                        }}
+                        updateData={updateFormData}
+                        validate={setIsValid}
+                        showNotification={(message: string) => showNotification(message, "info")}
                     />
                     <div>
-                        <button onClick={handleSave}>Save</button>
+                        <button onClick={handleSave} disabled={!isValid}>
+                            Save
+                        </button>
                         <button onClick={handleCancel}>Cancel</button>
                     </div>
+
                 </>
             ) : (
                 <>
