@@ -64,7 +64,6 @@ const SummaryView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Summary</h2>
             {isEditing ? (
                 <>
                     <SummaryForm
@@ -85,8 +84,14 @@ const SummaryView = ({ data }: { data: any }) => {
                 </>
             ) : (
                 <>
-                    <p>{formData}</p>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <div id="view-container-summary">
+                        <h1>Summary</h1>
+                        <div id="summary-display">
+                            <img id="pd-avatar" src="https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png" alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/>   {/*  FIX!!! */}
+                            <p>{formData}</p>
+                        </div>
+                    </div>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
             )}
             {notification && (

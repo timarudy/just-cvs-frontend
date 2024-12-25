@@ -1,0 +1,49 @@
+#view-container-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content(50);
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #4c5c7d;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+#pd-avatar {
+    margin-top: -0.8em;
+    outline: solid;
+    outline-offset: -5px;
+    outline-width: 6px;
+    outline-color: #507687;
+}
+
+#view-container-summary h1 {
+    margin-top: -0.1em;
+    text-align: center;
+}
+
+#summary-display {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+#summary-display p {
+    font-size: 20px;
+    margin-top: -0.5em;
+}
+
+#view-container-summary .view-nav-buttons {
+    position: relative;
+    display: flex;
+    gap: 36em;
+    justify-content: center;
+    width: 14%;
+    margin: -3.7em auto;
+}

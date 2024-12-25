@@ -156,7 +156,7 @@ const PersonalDetailsForm = ({ data, updateData, validate, showNotification }: a
                     />
                 </label>
                 <label>
-                    gender:
+                    gender
                     <select
                         value={data.gender || "male"}
                         onChange={(e) =>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import "/src/css/components/views/SkillsView.css";
+import TagsInput from "../forms/inputs/TagsInput";
 
 const SkillsView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -42,47 +44,60 @@ const SkillsView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Skills</h2>
             {isEditing ? (
                 <>
-                    <label>
-                        Hard Skills:
-                        <input
-                            type="text"
-                            value={formData.hard_skills.join(", ")}
-                            onChange={(e) =>
-                                setFormData({ ...formData, hard_skills: e.target.value.split(", ") })
-                            }
-                        />
-                    </label>
-                    <label>
-                        Soft Skills:
-                        <input
-                            type="text"
-                            value={formData.soft_skills.join(", ")}
-                            onChange={(e) =>
-                                setFormData({ ...formData, soft_skills: e.target.value.split(", ") })
-                            }
-                        />
-                    </label>
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <div id="view-container-skills">
+                        <div id="skills-display">
+                            <div id="hard-skills">
+                                <h2>hard skills</h2>
+                                <input
+                                    type="text"
+                                    value={formData.hard_skills.join(", ")}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, hard_skills: e.target.value.split(", ") })
+                                    }
+                                />
+                            </div>
+                            <div id="soft-skills">
+                                <h2>soft skills</h2>
+                                <input
+                                    type="text"
+                                    value={formData.soft_skills.join(", ")}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, soft_skills: e.target.value.split(", ") })
+                                    }
+                                />   
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-nav-buttons">
+                        <button onClick={handleSave}>save</button>
+                        <button onClick={handleCancel}>cancel</button>
+                    </div>
                 </>
             ) : (
                 <>
-                    <h3>Hard Skills</h3>
-                    <ul>
-                        {formData.hard_skills.map((skill: string, index: number) => (
-                            <li key={index}>{skill}</li>
-                        ))}
-                    </ul>
-                    <h3>Soft Skills</h3>
-                    <ul>
-                        {formData.soft_skills.map((skill: string, index: number) => (
-                            <li key={index}>{skill}</li>
-                        ))}
-                    </ul>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <div id="view-container-skills">
+                        <div id="skills-display">
+                            <div id="hard-skills">
+                                <h2>hard skills</h2>
+                                <ul>
+                                    {formData.hard_skills.map((skill: string, index: number) => (
+                                        <li className="skills" key={index}>{skill}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div id="soft-skills">
+                                <h2>soft skills</h2>
+                                <ul>
+                                    {formData.soft_skills.map((skill: string, index: number) => (
+                                        <li className="skills" key={index}>{skill}</li>
+                                    ))}
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
             )}
             {notification && (
