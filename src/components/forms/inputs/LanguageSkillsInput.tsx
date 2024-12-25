@@ -31,7 +31,7 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                 certification: certification || null,
             };
             setLanguages([...languages, newEntry]);
-            setName(''); // Clear inputs after adding
+            setName('');
             setLevel('');
             setCertification(null);
         }
@@ -45,43 +45,45 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
     const handleCertificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setCertification(URL.createObjectURL(file)); // Using URL as a placeholder
+            setCertification(URL.createObjectURL(file)); 
         } else {
             setCertification(null);
         }
     };
 
     return (
-        <div className="language-skills-input">
-            <input
-                type="text"
-                value={name}
-                placeholder="Language"
-                onChange={(e) => setName(e.target.value)}
-                maxLength={25}
-            />
-            <select value={level} onChange={(e) => setLevel(e.target.value)}>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-                <option value="Native">Native</option>
-            </select>
-            <input
-                type="file"
-                onChange={handleCertificationChange}
-                placeholder="Upload Certification (optional)"
-            />
-            <button type="button" onClick={handleAddLanguage}>
-                add
-            </button>
-            <div>
+        <div id='language-disp'>
+            <div className="language-skills-input">
+                <input
+                    type="text"
+                    value={name}
+                    placeholder="Language"
+                    onChange={(e) => setName(e.target.value)}
+                    maxLength={25}
+                />
+                <select value={level} onChange={(e) => setLevel(e.target.value)}>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Native">Native</option>
+                </select>
+                <input
+                    type="file"
+                    onChange={handleCertificationChange}
+                    placeholder="Upload Certification (optional)"
+                />
+                <button type="button" onClick={handleAddLanguage}>
+                    add
+                </button>
+                
+            </div>
+            <div id='lang_list'>
                 {languages.map((lang) => (
                     <div key={lang.id} className="language-entry">
+                        <div id="fancy-lines">‎</div>
                         {lang.name_of_language} ({lang.level_of_language})
-                        {lang.certification && <span> - Certification: {lang.certification}</span>}
-                        <button type="button" onClick={() => removeLanguage(lang.id)}>
-                            &times;
-                        </button>
+                        {lang.certification && <span> - certified</span>}
+                        <button id='remove-button' onClick={() => removeLanguage(lang.id)}>&times;</button>
                     </div>
                 ))}
             </div>

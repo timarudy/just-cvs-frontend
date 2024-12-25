@@ -1,0 +1,55 @@
+#view-container-skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: fit-content(50);
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #4c5c7d;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+#view-container-skills h2 {
+    margin: -0.1em 0 0 0;
+    font-size: 22px;
+}
+
+#skills-display {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));;
+    align-items: start;
+}
+
+#hard-skills ul{ 
+    width: 50%;
+}
+
+#soft-skills ul{
+    width: 150%;
+}
+
+#skills-display ul {
+    margin-left: -2em;
+    margin-bottom: 1em;
+    list-style-type: "-  ";
+    font-size: 20px;
+}
+
+li.skills, #view-container-skills input {
+    margin-top: 0.3em;
+}
+
+#view-container-skills .view-nav-buttons {
+    position: relative;
+    display: flex;
+    gap: 36em;
+    justify-content: center;
+    width: 14%;
+    margin: -3.7em auto;
+}

@@ -12,7 +12,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
     return (
         <div className="form-container-ed">
             <label>
-                <p>education:</p>
+                <p>education</p>
                 <EducationInput
                     education={data.education}
                     setEducation={(newEducation) =>
@@ -21,7 +21,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
                 />
             </label>
             <label>
-                <p>publications:</p>
+                <p>publications</p>
                 <PublicationInput
                     publications={data.publication}
                     setPublications={(newPublications) =>

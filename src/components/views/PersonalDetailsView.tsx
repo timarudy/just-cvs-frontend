@@ -75,7 +75,6 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Personal Details</h2>
             {isEditing ? (
                 <>
                     <PersonalDetailsForm
@@ -84,16 +83,16 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                         validate={setIsValid}
                         showNotification={(message: string) => showNotification(message, "info")}
                     />
-                    <div>
+                    <div className="form-nav-buttons">
                         <button onClick={handleSave} disabled={!isValid}>
-                            Save
+                            save
                         </button>
-                        <button onClick={handleCancel}>Cancel</button>
+                        <button onClick={handleCancel}>cancel</button>
                     </div>
                 </>
             ) : (
                 <>
-                    <div className="form-container-pd">
+                    <div id="view-container-pd">
                         <div className="left-column">
                             <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/></p>
                             <div className="data-field">
@@ -106,9 +105,9 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </div>
                             <div className="data-field">
                                 <div className="data-label">social media links</div>
-                                <ul>
+                                <ul className="data-value-sm">
                                     {formData.social_media.map((link: any, index: number) => (
-                                        <li key={index}>
+                                        <li key={index} id="view-sm-entry">
                                             <a
                                                 href={link.url}
                                                 target="_blank"
@@ -118,6 +117,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                                             </a>
                                         </li>
                                     ))}
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </div>
                         </div>
                     </div>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
             )}
 

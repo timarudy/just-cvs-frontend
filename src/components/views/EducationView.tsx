@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import "/src/css/components/views/EducationView.css";
 
 const EducationView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -42,58 +43,66 @@ const EducationView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Education</h2>
             {isEditing ? (
                 <>
-                    {formData.education.map((edu: any, index: number) => (
-                        <div key={index}>
-                            <input
-                                type="text"
-                                value={edu.educational_organisation}
-                                onChange={(e) => {
-                                    const updatedData = [...formData.education];
-                                    updatedData[index].educational_organisation = e.target.value;
-                                    setFormData({ ...formData, education: updatedData });
-                                }}
-                                placeholder="Educational Organisation"
-                            />
-                            <input
-                                type="number"
-                                value={edu.year_of_start || ""}
-                                onChange={(e) => {
-                                    const updatedData = [...formData.education];
-                                    updatedData[index].year_of_start = e.target.value;
-                                    setFormData({ ...formData, education: updatedData });
-                                }}
-                                placeholder="Start Year"
-                            />
-                            <input
-                                type="number"
-                                value={edu.year_of_end || ""}
-                                onChange={(e) => {
-                                    const updatedData = [...formData.education];
-                                    updatedData[index].year_of_end = e.target.value;
-                                    setFormData({ ...formData, education: updatedData });
-                                }}
-                                placeholder="End Year"
-                            />
-                            <hr />
-                        </div>
-                    ))}
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <div id="view-container-edu-mod">
+                        <h2>Education</h2>
+                        {formData.education.map((edu: any, index: number) => (
+                            <div id="edu-mod-inputs" key={index}>
+                                <input
+                                    type="text"
+                                    value={edu.educational_organisation}
+                                    onChange={(e) => {
+                                        const updatedData = [...formData.education];
+                                        updatedData[index].educational_organisation = e.target.value;
+                                        setFormData({ ...formData, education: updatedData });
+                                    }}
+                                    placeholder="Educational Organisation"
+                                />
+                                <input
+                                    type="number"
+                                    value={edu.year_of_start || ""}
+                                    onChange={(e) => {
+                                        const updatedData = [...formData.education];
+                                        updatedData[index].year_of_start = e.target.value;
+                                        setFormData({ ...formData, education: updatedData });
+                                    }}
+                                    placeholder="Start Year"
+                                />
+                                <input
+                                    type="number"
+                                    value={edu.year_of_end || ""}
+                                    onChange={(e) => {
+                                        const updatedData = [...formData.education];
+                                        updatedData[index].year_of_end = e.target.value;
+                                        setFormData({ ...formData, education: updatedData });
+                                    }}
+                                    placeholder="End Year"
+                                />
+                                <hr />
+                            </div>
+                        ))}
+                    </div>
+                    <div className="form-nav-buttons">
+                        <button onClick={handleSave}>save</button>
+                        <button onClick={handleCancel}>cancel</button>
+                    </div>
                 </>
             ) : (
                 <>
-                    <ul>
-                        {formData.education.map((edu: any, index: number) => (
-                            <li key={index}>
-                                <strong>{edu.educational_organisation}</strong> -{" "}
-                                {edu.year_of_start} to {edu.year_of_end || "Present"}
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <div id="view-container-edu">
+                        <h2>Education</h2>
+                        <ul>
+                            {formData.education.map((edu: any, index: number) => (
+                                <li key={index}>
+                                    <strong>{edu.educational_organisation}</strong> -{" "}
+                                    {edu.year_of_start} to {edu.year_of_end || "present"}
+                                    <hr/>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
             )}
             {notification && (

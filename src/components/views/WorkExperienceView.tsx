@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import "/src/css/components/views/WorkExperienceView.css";
 
 const WorkExperienceView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -51,13 +52,12 @@ const WorkExperienceView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Work Experience</h2>
             {isEditing ? (
                 <>
-                    {formData.map((experience: any, index: number) => (
-                        <div key={index}>
-                            <label>
-                                Position:
+                    <div id="view-container-work">
+                        <h2>work experience</h2>
+                        {formData.map((experience: any, index: number) => (
+                            <div id="work-mod-inputs" key={index}>
                                 <input
                                     type="text"
                                     value={experience.position}
@@ -67,9 +67,6 @@ const WorkExperienceView = ({ data }: { data: any }) => {
                                         setFormData(updatedFormData);
                                     }}
                                 />
-                            </label>
-                            <label>
-                                Place of Work:
                                 <input
                                     type="text"
                                     value={experience.place_of_work}
@@ -79,9 +76,6 @@ const WorkExperienceView = ({ data }: { data: any }) => {
                                         setFormData(updatedFormData);
                                     }}
                                 />
-                            </label>
-                            <label>
-                                Onboarding Date:
                                 <input
                                     type="date"
                                     value={experience.onboarding_date}
@@ -91,9 +85,6 @@ const WorkExperienceView = ({ data }: { data: any }) => {
                                         setFormData(updatedFormData);
                                     }}
                                 />
-                            </label>
-                            <label>
-                                Offboarding Date:
                                 <input
                                     type="date"
                                     value={experience.offboarding_date || ""}
@@ -103,27 +94,34 @@ const WorkExperienceView = ({ data }: { data: any }) => {
                                         setFormData(updatedFormData);
                                     }}
                                 />
-                            </label>
-                            <hr />
-                        </div>
-                    ))}
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                                <hr />
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div className="form-nav-buttons">
+                        <button onClick={handleSave}>save</button>
+                        <button onClick={handleCancel}>cancel</button>
+                    </div>
                 </>
             ) : (
                 <>
-                    <ul>
-                        {formData.map((experience: any, index: number) => (
-                            <li key={index}>
-                                <strong>{experience.position}</strong> at {experience.place_of_work}
-                                <br />
-                                {experience.onboarding_date} -{" "}
-                                {experience.offboarding_date || "Present"}
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <div id="view-container-work">
+                        <h2>work experience</h2>
+                        <ul>
+                            {formData.map((experience: any, index: number) => (
+                                <li key={index}>
+                                    <strong>{experience.position}</strong> at {experience.place_of_work} {" "}
+                                    ({experience.onboarding_date} - {" "}
+                                    {experience.offboarding_date || "present"})
+                                    <hr />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
+                
             )}
             {notification && (
                 <Notification

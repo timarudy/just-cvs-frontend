@@ -1,8 +1,14 @@
+#language-disp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .language-skills-input {
     display: grid;
     grid-template-columns: repeat(4, minmax(100px, 1fr));
     gap: 1em;
-    margin: 1em 0;
+    margin: 1em 0 0 0;
 }
 
 .language-skills-input input {
@@ -14,4 +20,19 @@
     border-radius: 0px;
     font-size: 18px;
     padding: 0.2em 0.8em;
+}
+
+#fancy-lines {
+    background-color: #507687;
+    width: 100em;
+    font-size: 7px;
+    margin: 2em 0;
+}
+ 
+#lang-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
 }

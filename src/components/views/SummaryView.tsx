@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import "/src/css/components/views/SummaryView.css";
 
 const SummaryView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -42,24 +43,33 @@ const SummaryView = ({ data }: { data: any }) => {
 
     return (
         <div>
-            <h2>Summary</h2>
             {isEditing ? (
                 <>
-                    <textarea
-                        value={formData}
-                        onChange={(e) => setFormData(e.target.value)}
-                        rows={5}
-                        cols={50}
-                    />
-                    <div>
-                        <button onClick={handleSave}>Save</button>
-                        <button onClick={handleCancel}>Cancel</button>
+                    <div id="view-container-summary">
+                        <h1>Summary</h1>
+                        <textarea
+                            className="summary-input"
+                            value={formData}
+                            onChange={(e) => setFormData(e.target.value)}
+                            maxLength={500}
+                            rows={4}
+                        />
+                    </div>
+                    <div className="form-nav-buttons">
+                        <button onClick={handleSave}>save</button>
+                        <button onClick={handleCancel}>cancel</button>
                     </div>
                 </>
             ) : (
                 <>
-                    <p>{formData}</p>
-                    <button onClick={() => setIsEditing(true)}>Modify</button>
+                    <div id="view-container-summary">
+                        <h1>Summary</h1>
+                        <div id="summary-display">
+                            <img id="pd-avatar" src="https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png" alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/>   {/*  FIX!!! */}
+                            <p>{formData}</p>
+                        </div>
+                    </div>
+                    <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>
                 </>
             )}
             {notification && (

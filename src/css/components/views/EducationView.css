@@ -1,0 +1,52 @@
+#view-container-edu, #view-container-edu-mod {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: top;
+    width: fit-content(50);
+    max-width: 800px;
+    min-height: 620px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #4c5c7d;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+#view-container-edu hr {
+    display: block;
+    margin: 1em 1em 1em 0;
+    outline: solid;
+    outline-width: 3.5px;
+    outline-color: #507687;
+    max-width: 90%;
+    border-style: hidden;
+    color: #507687;
+}
+
+#view-container-edu-mod hr {
+    display: block;
+    margin: 1em 1em 1em 2em;
+    outline: solid;
+    outline-width: 3.5px;
+    outline-color: #507687;
+    max-width: 90%;
+    border-style: hidden;
+    color: #507687;
+}
+
+#view-container-edu h2, #view-container-edu-mod h2{
+    margin-top: -0.1em;
+    text-align: center;
+}
+
+#edu-mod-inputs input{
+    margin-left: 8em;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 20px;
+}

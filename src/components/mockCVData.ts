@@ -3,7 +3,7 @@ export const mockCVData = {
     photos_link: "https://od.lk/s/Nl8yMTA1MjE1ODlf/profile%20pic%20default.png",
     full_name: "John Developer",
     date_of_birth: "1999-05-15",
-    gender: "Male",
+    gender: "male",
     city: "San Francisco",
     country: "United States",
     street: "123 Tech Street",
@@ -14,15 +14,15 @@ export const mockCVData = {
     social_media: [
         {
             platform: "LinkedIn",
-            url: "https://linkedin.com/in/johndeveloper"
+            url: "https://linkedin.com/in/johndeveloper1"
         },
         {
             platform: "GitHub",
-            url: "https://github.com/johndev"
+            url: "https://github.com/johndev1"
         },
         {
             platform: "Twitter",
-            url: "https://twitter.com/johndev"
+            url: "https://twitter.com/johndev1"
         }
     ],
 
