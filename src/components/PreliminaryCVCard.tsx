@@ -8,7 +8,7 @@ const PreliminaryCVCard: React.FC<UserPreliminaryType> = ({ id, full_name, date_
         <section className="user-card">
             <div className="avatar">
                 <img
-                    src={photos_link || '/path/to/default-avatar.png'} width={280} height={280}
+                    src={photos_link || '../../ui samples/mutual samples/profile pic default.png'} width={280} height={280}
                     alt={`${full_name} avatar`}
                 />
             </div>

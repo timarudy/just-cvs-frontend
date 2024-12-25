@@ -81,7 +81,6 @@ const WorkExperienceInput: React.FC<WorkExperienceInputProps> = ({ experiences, 
             <div id="work-list">
                 {experiences.map((exp) => (
                     <div key={exp.id} className="experience-entry">
-                        <div id="fancy-lines">‎</div>
                         <button id="remove-button" type="button" onClick={() => removeExperience(exp.id)}>&times;</button>
                         {" "} {exp.place_of_work} - {exp.position} {" "} 
                         ({exp.onboarding_date} to {exp.offboarding_date})

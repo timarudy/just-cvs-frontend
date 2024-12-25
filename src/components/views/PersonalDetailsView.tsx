@@ -3,6 +3,8 @@ import axios from "axios";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import Notification from "../Notification";
 import "/src/css/components/views/PersonalDetailsView.css";
+import { extractSocialMediaValues, extractTagValues } from "../../extensions/arrayExtensions";
+import { CVData, UserWorkExperienceType } from "../../types/userTypes";
 
 
 const PersonalDetailsView = ({ data }: { data: any }) => {
@@ -40,6 +42,20 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
     };
 
     const handleSave = async () => {
+
+        const cvData = {
+            photos_link: formData.photos_link || null,
+            full_name: formData.full_name,
+            date_of_birth: formData.date_of_birth,
+            gender: formData.gender,
+            place_of_residence: `${formData.city}, ${formData.country} ${formData.street}`,
+            relocate: formData.relocate,
+            names_of_hobby: extractTagValues(formData.names_of_hobby),
+            phone_number: formData.phone_number,
+            email: formData.email,
+            social_media: extractSocialMediaValues(formData.social_media),
+        };
+
         if (!validateForm()) {
             showNotification("Please correct the errors before saving.", "error");
             return;
@@ -47,13 +63,15 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
 
         try {
             const url = getApiUrl();
-            await axios.put(url, formData);
+            await axios.put(url, cvData);
 
             const response = await axios.get(url);
             setFormData(response.data);
 
             setIsEditing(false);
             showNotification("Personal details updated successfully!", "success");
+
+            window.location.reload();
         } catch (error) {
             console.error("Error saving personal details:", error);
             showNotification("Failed to save changes. Please try again.", "error");
@@ -65,8 +83,11 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
         setFormData(data);
     };
 
-    const updateFormData = (newData: any) => {
-        setFormData(newData);
+    const updateFormData = (newData: Partial<typeof formData>) => {
+        setFormData((prevState: any) => ({
+            ...prevState,
+            ...newData,
+        }));
     };
 
     useEffect(() => {
@@ -94,7 +115,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                 <>
                     <div id="view-container-pd">
                         <div className="left-column">
-                            <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }}/></p>
+                            <p><img id="pd-avatar" src={formData.photos_link} alt="avatar" style={{ maxWidth: "300px", maxHeight: "300px" }} /></p>
                             <div className="data-field">
                                 <div className="data-label">phone number</div>
                                 <div className="data-value">{formData.phone_number}</div>
@@ -117,7 +138,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                                             </a>
                                         </li>
                                     ))}
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -152,7 +173,7 @@ const PersonalDetailsView = ({ data }: { data: any }) => {
                             </div>
                             <div className="data-field">
                                 <div className="data-label">hobbies</div>
-                                <div className="data-value">{formData.names_of_hobby.join(", ")}</div>
+                                <div className="data-value">{extractTagValues(formData.names_of_hobby).join(", ")}</div>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,6 @@ export interface LanguageSkill {
     id: string;
     name_of_language: string;
     level_of_language: string;
-    certification?: string | null;
 }
 
 interface LanguageSkillsInputProps {
@@ -16,7 +15,6 @@ interface LanguageSkillsInputProps {
 const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, setLanguages }) => {
     const [name, setName] = useState('');
     const [level, setLevel] = useState('');
-    const [certification, setCertification] = useState<string | null>(null);
 
     const handleAddLanguage = () => {
         const trimmedName = name.trim();
@@ -28,27 +26,16 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                 id: newId,
                 name_of_language: trimmedName,
                 level_of_language: trimmedLevel,
-                certification: certification || null,
             };
             setLanguages([...languages, newEntry]);
             setName('');
             setLevel('');
-            setCertification(null);
         }
     };
 
     const removeLanguage = (id: string) => {
         const updatedLanguages = languages.filter((lang) => lang.id !== id);
         setLanguages(updatedLanguages);
-    };
-
-    const handleCertificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setCertification(URL.createObjectURL(file)); 
-        } else {
-            setCertification(null);
-        }
     };
 
     return (
@@ -67,11 +54,6 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                     <option value="Advanced">Advanced</option>
                     <option value="Native">Native</option>
                 </select>
-                <input
-                    type="file"
-                    onChange={handleCertificationChange}
-                    placeholder="Upload Certification (optional)"
-                />
                 <button type="button" onClick={handleAddLanguage}>
                     add
                 </button>
@@ -82,7 +64,6 @@ const LanguageSkillsInput: React.FC<LanguageSkillsInputProps> = ({ languages, se
                     <div key={lang.id} className="language-entry">
                         <div id="fancy-lines">‎</div>
                         {lang.name_of_language} ({lang.level_of_language})
-                        {lang.certification && <span> - certified</span>}
                         <button id='remove-button' onClick={() => removeLanguage(lang.id)}>&times;</button>
                     </div>
                 ))}

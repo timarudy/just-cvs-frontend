@@ -96,7 +96,6 @@ export interface SocialMediaType {
 export interface LanguageType {
     name_of_language: string;
     level_of_language: string;
-    certification?: string | null;
 }
 
 export interface UserEducationType {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Notification from "../Notification";
+import EducationForm from "../forms/EducationForm";
 import "/src/css/components/views/EducationView.css";
 
 const EducationView = ({ data }: { data: any }) => {
@@ -41,48 +42,21 @@ const EducationView = ({ data }: { data: any }) => {
         setFormData(data || { education: [], publication: [] }); // Reset to original data
     };
 
+    const updateFormData = (newData: any) => {
+        setFormData((prevState: any) => ({
+            ...prevState,
+            ...newData,
+        }));
+    };
+
     return (
         <div>
             {isEditing ? (
                 <>
-                    <div id="view-container-edu-mod">
-                        <h2>Education</h2>
-                        {formData.education.map((edu: any, index: number) => (
-                            <div id="edu-mod-inputs" key={index}>
-                                <input
-                                    type="text"
-                                    value={edu.educational_organisation}
-                                    onChange={(e) => {
-                                        const updatedData = [...formData.education];
-                                        updatedData[index].educational_organisation = e.target.value;
-                                        setFormData({ ...formData, education: updatedData });
-                                    }}
-                                    placeholder="Educational Organisation"
-                                />
-                                <input
-                                    type="number"
-                                    value={edu.year_of_start || ""}
-                                    onChange={(e) => {
-                                        const updatedData = [...formData.education];
-                                        updatedData[index].year_of_start = e.target.value;
-                                        setFormData({ ...formData, education: updatedData });
-                                    }}
-                                    placeholder="Start Year"
-                                />
-                                <input
-                                    type="number"
-                                    value={edu.year_of_end || ""}
-                                    onChange={(e) => {
-                                        const updatedData = [...formData.education];
-                                        updatedData[index].year_of_end = e.target.value;
-                                        setFormData({ ...formData, education: updatedData });
-                                    }}
-                                    placeholder="End Year"
-                                />
-                                <hr />
-                            </div>
-                        ))}
-                    </div>
+                    <EducationForm
+                        data={formData}
+                        updateData={updateFormData}
+                    />
                     <div className="form-nav-buttons">
                         <button onClick={handleSave}>save</button>
                         <button onClick={handleCancel}>cancel</button>
@@ -93,13 +67,32 @@ const EducationView = ({ data }: { data: any }) => {
                     <div id="view-container-edu">
                         <h2>Education</h2>
                         <ul>
-                            {formData.education.map((edu: any, index: number) => (
-                                <li key={index}>
-                                    <strong>{edu.educational_organisation}</strong> -{" "}
-                                    {edu.year_of_start} to {edu.year_of_end || "present"}
-                                    <hr/>
-                                </li>
-                            ))}
+                            {formData.education.length === 0 ? (
+                                <p>No education records</p>
+                            ) : (
+                                formData.education.map((edu: any, index: number) => (
+                                    <li key={index}>
+                                        <strong>{edu.educational_organisation}</strong> -{" "}
+                                        {edu.year_of_start} to {edu.year_of_end || "present"}
+                                        <hr />
+                                    </li>
+                                ))
+                            )}
+                        </ul>
+                    </div>
+                    <div id="view-container-pub">
+                        <h2>Publications</h2>
+                        <ul>
+                            {formData.publication.length === 0 ? (
+                                <p>No publications</p>
+                            ) : (
+                                formData.publication.map((pub: any, index: number) => (
+                                    <li key={index}>
+                                        <strong>{pub.title}</strong> - {pub.year}
+                                        <hr />
+                                    </li>
+                                ))
+                            )}
                         </ul>
                     </div>
                     <button className="view-nav-buttons" onClick={() => setIsEditing(true)}>modify</button>

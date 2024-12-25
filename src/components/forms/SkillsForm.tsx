@@ -9,19 +9,16 @@ const mockLanguages = [
         id: crypto.randomUUID(),
         name_of_language: "English",
         level_of_language: "Native",
-        certification: null
     },
     {
         id: crypto.randomUUID(),
         name_of_language: "Spanish",
         level_of_language: "Intermediate",
-        certification: null
     },
     {
         id: crypto.randomUUID(),
         name_of_language: "French",
         level_of_language: "Beginner",
-        certification: "long long long long long long string"
     }
 ];
 
@@ -52,26 +49,13 @@ const SkillsForm = ({ data, updateData }: any) => {
                 <label>
                     <p id="language-label">languages</p>
                     <LanguageSkillsInput
-                        languages={data.languages || mockLanguages}  // mock setup
+                        languages={data.language}
                         setLanguages={(newLanguages) =>
-                            updateData({ ...data, languages: newLanguages }) 
+                            updateData({ ...data, language: newLanguages }) 
                         }
                     />
                 </label>
             </div>
-{/* 
-            <div className="language-subflex">
-                <label>
-                    <p id="language-label">languages:</p>
-                    <LanguageSkillsInput
-                        languages={data.languages} 
-                        setLanguages={(newLanguages) =>
-                            updateData({ ...data, languages: newLanguages })
-                        }
-                    />
-                </label>
-            </div>
- */}
         </div>
     );
 };
