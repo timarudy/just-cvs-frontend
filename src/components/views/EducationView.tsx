@@ -6,7 +6,7 @@ import "/src/css/components/views/EducationView.css";
 
 const EducationView = ({ data }: { data: any }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [formData, setFormData] = useState(data || { education: [], publication: [] });
+    const [formData, setFormData] = useState(data || { education: [] });
     const [notification, setNotification] = useState<string | null>(null);
     const [notificationType, setNotificationType] = useState<"success" | "error" | "info">("info");
 
@@ -28,7 +28,7 @@ const EducationView = ({ data }: { data: any }) => {
             const url = getApiUrl();
             await axios.put(url, formData);
             const response = await axios.get(url);
-            setFormData(response.data); // Update all data from the response
+            setFormData(response.data);
             setIsEditing(false);
             showNotification("Education updated successfully!", "success");
         } catch (error) {
@@ -39,7 +39,7 @@ const EducationView = ({ data }: { data: any }) => {
 
     const handleCancel = () => {
         setIsEditing(false);
-        setFormData(data || { education: [], publication: [] }); // Reset to original data
+        setFormData(data || { education: [] });
     };
 
     const updateFormData = (newData: any) => {
@@ -74,21 +74,6 @@ const EducationView = ({ data }: { data: any }) => {
                                     <li key={index}>
                                         <strong>{edu.educational_organisation}</strong> -{" "}
                                         {edu.year_of_start} to {edu.year_of_end || "present"}
-                                        <hr />
-                                    </li>
-                                ))
-                            )}
-                        </ul>
-                    </div>
-                    <div id="view-container-pub">
-                        <h2>Publications</h2>
-                        <ul>
-                            {formData.publication.length === 0 ? (
-                                <p>No publications</p>
-                            ) : (
-                                formData.publication.map((pub: any, index: number) => (
-                                    <li key={index}>
-                                        <strong>{pub.title}</strong> - {pub.year}
                                         <hr />
                                     </li>
                                 ))

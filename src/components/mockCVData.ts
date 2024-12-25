@@ -76,9 +76,6 @@ export const mockCVData = {
             year_of_end: 2022
         }
     ],
-    
-    // Publications (part of education view)
-    publication: []
 };
 
 // Function to simulate API response delay

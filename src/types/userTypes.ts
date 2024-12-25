@@ -1,5 +1,4 @@
 import { Education } from "../components/forms/inputs/EducationInput";
-import { Publication } from "../components/forms/inputs/PublicationsInput";
 import { SocialMedia } from "../components/forms/inputs/SocialMediaInput";
 import { TagType } from "../components/forms/inputs/TagsInput";
 
@@ -21,13 +20,6 @@ export interface FormDataType {
 
 export interface UserEducationGeneralType {
     education: Education[];
-    publication: Publication[];
-}
-
-export interface UserPublicationType {
-    name_of_publication: string;
-    date_of_publication: string;
-    publication_link: string | null;
 }
 
 export interface UserPreliminaryType {
@@ -121,5 +113,4 @@ export interface CVData {
     language: LanguageType[];
     work_experience: UserWorkExperienceType[];
     education: Education[];
-    publication: Publication[];
 }

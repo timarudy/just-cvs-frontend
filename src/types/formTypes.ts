@@ -26,11 +26,6 @@ export interface Education {
     courses: Record<string, string>[];
 }
 
-export interface Publication {
-    title: string;
-    date: string;
-}
-
 export interface Skill {
     name: string;
 }

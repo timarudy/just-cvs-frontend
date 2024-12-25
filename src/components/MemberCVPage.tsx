@@ -41,7 +41,6 @@ const MemberCVPage = () => {
                         offboarding_date: job.offboarding_date,
                     })),
                     education: response.data.education,
-                    publication: response.data.publication,
                 };
 
                 setCVData(datas);

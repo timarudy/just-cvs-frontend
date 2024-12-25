@@ -41,7 +41,6 @@ const MemberForm = () => {
         work_experience: [],
         general_education: {
             education: [],
-            publication: [],
         },
     });
 
@@ -103,7 +102,6 @@ const MemberForm = () => {
                     offboarding_date: job.offboarding_date,
                 })),
                 education: formData.general_education.education,
-                publication: formData.general_education.publication,
             };
 
             try {
@@ -114,7 +112,6 @@ const MemberForm = () => {
                 });
 
                 showNotification("Successfully submitted!", "success");
-                console.log("Successfully submitted:", response.data);
             } catch (error) {
                 console.error("Error submitting data:", error);
                 showNotification("Failed to submit data. Please try again.", "error");
